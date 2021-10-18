@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "920030792570",
+    "project_id": "codeathon-811d7",
+    "storage_bucket": "codeathon-811d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920030792570:android:f88dae1a399bf9a52664c3",
+        "android_client_info": {
+          "package_name": "codeathon.codeathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920030792570-jjs2dr1h6ofdtmc7b2e4r8v3io1h3b31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "codeathon.codeathon",
+            "certificate_hash": "8450d08e9a8e2a28b397bc454540d90dff8c410f"
+          }
+        },
+        {
+          "client_id": "920030792570-4c4m7icgjds1s4uvuo3ef9s0vmu034is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATMZJ4vDZkgHBsNKO3LrmhxWU7eZqun5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920030792570-4c4m7icgjds1s4uvuo3ef9s0vmu034is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
