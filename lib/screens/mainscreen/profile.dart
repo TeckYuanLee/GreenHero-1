@@ -1,7 +1,6 @@
 import 'package:codeathon/services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:codeathon/models/user.dart';
@@ -41,8 +40,7 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 70.0,
-                            backgroundImage: NetworkImage(
-                                'https://i1.wp.com/nyunews.com/wp-content/uploads/2021/03/IMG_9199.png?fit=900%2C900&ssl=1'),
+                            backgroundImage: AssetImage('images/avatar.png'),
                             backgroundColor: Colors.transparent,
                           ),
                           Text(

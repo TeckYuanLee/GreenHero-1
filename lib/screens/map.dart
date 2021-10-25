@@ -6,8 +6,31 @@ import 'package:sizer/sizer.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:codeathon/widgets/roundbutton.dart';
+import 'package:floating_action_bubble/floating_action_bubble.dart';
 
-class MapPage extends StatelessWidget {
+class MapPage extends StatefulWidget {
+  @override
+  _MapPageState createState() => _MapPageState();
+}
+
+class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
+  Animation<double> _animation;
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 260),
+    );
+
+    final curvedAnimation =
+        CurvedAnimation(curve: Curves.easeInOut, parent: _animationController);
+    _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget buildSheet(context, state) => Material(
@@ -120,13 +143,13 @@ class MapPage extends StatelessWidget {
                             'Confirm',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Theme.of(context).primaryColor),
+                                color: Colors.white),
                           ),
                           style: OutlinedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).primaryColor,
                             side: BorderSide(
                               width: 1.0,
                               color: Theme.of(context).primaryColor,
@@ -200,12 +223,73 @@ class MapPage extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(16.0),
-                    hintText: "Search for your localisation",
+                    hintText: "Search for recycling centres",
                     prefixIcon: Icon(Icons.location_on_outlined),
                   ),
                 ),
               ),
             ],
+          ),
+        ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        //Init Floating Action Bubble
+        Padding(
+          padding: EdgeInsets.all(5.w),
+          child: Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: FloatingActionBubble(
+              // Menu items
+              items: <Bubble>[
+                // Floating action menu item
+                Bubble(
+                  title: "Add Recycling Centres",
+                  iconColor: Colors.white,
+                  bubbleColor: Theme.of(context).primaryColor,
+                  icon: FontAwesomeIcons.plusCircle,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () {
+                    _animationController.reverse();
+                  },
+                ),
+                // Floating action menu item
+                Bubble(
+                  title: "Rate Recycling Centres",
+                  iconColor: Colors.white,
+                  bubbleColor: Theme.of(context).primaryColor,
+                  icon: FontAwesomeIcons.solidStar,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () {
+                    _animationController.reverse();
+                  },
+                ),
+                //Floating action menu item
+                Bubble(
+                  title: "     Respond to Q&As        ",
+                  iconColor: Colors.white,
+                  bubbleColor: Theme.of(context).primaryColor,
+                  icon: FontAwesomeIcons.solidCommentAlt,
+                  titleStyle: TextStyle(fontSize: 16, color: Colors.white),
+                  onPress: () {
+                    _animationController.reverse();
+                  },
+                ),
+              ],
+
+              // animation controller
+              animation: _animation,
+
+              // On pressed change animation state
+              onPress: () => _animationController.isCompleted
+                  ? _animationController.reverse()
+                  : _animationController.forward(),
+
+              // Floating Action button Icon color
+              iconColor: Colors.white,
+              // Flaoting Action button Icon
+
+              iconData: FontAwesomeIcons.handHoldingHeart,
+              backGroundColor: Theme.of(context).primaryColor,
+            ),
           ),
         ),
       ],

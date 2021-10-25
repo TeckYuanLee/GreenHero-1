@@ -1,8 +1,8 @@
 import 'package:codeathon/screens/mainscreen/home.dart';
 import 'package:codeathon/screens/mainscreen/info.dart';
 import 'package:codeathon/screens/mainscreen/profile.dart';
-import 'package:codeathon/screens/mainscreen/scan.dart';
 import 'package:codeathon/screens/mainscreen/community.dart';
+import 'package:codeathon/screens/mainscreen/rewards.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -28,8 +28,10 @@ class _NavPageState extends State<NavPage> {
       case 1:
         return CommunityPage();
       case 2:
-        return InfoPage();
+        return ShopPage();
       case 3:
+        return InfoPage();
+      case 4:
         return ProfilePage();
       default:
         return HomePage();
@@ -55,6 +57,13 @@ class _NavPageState extends State<NavPage> {
           title: Text('Community'),
           textAlign: TextAlign.center,
           icon: FaIcon(FontAwesomeIcons.users),
+          activeColor: Color(0xFF2D6950),
+          inactiveColor: inactiveColor,
+        ),
+        BottomNavyBarItem(
+          title: Text('Rewards'),
+          textAlign: TextAlign.center,
+          icon: FaIcon(FontAwesomeIcons.gift),
           activeColor: Color(0xFF2D6950),
           inactiveColor: inactiveColor,
         ),

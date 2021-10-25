@@ -21,181 +21,30 @@ class CommunityPage extends StatelessWidget {
                       color: Theme.of(context).primaryColor),
                 ),
                 SizedBox(
-                  height: 3.h,
+                  height: 2.h,
                 ),
-                Container(
-                  color: Colors.white,
-                  width: double.maxFinite,
-                  height: 5.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 3.w),
-                            child: Image.asset(
-                              'images/gold-medal.png',
-                              height: 3.h,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Image.asset(
-                              'icons/flags/png/my.png',
-                              package: 'country_icons',
-                              height: 2.h,
-                            ),
-                          ),
-                          Text(
-                            'Malaysia',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 12.5.sp),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '50 P',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                                fontSize: 10.sp),
-                          ),
-                          SizedBox(
-                            width: 2.w,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 2.w),
-                            child: Text(
-                              '15,999',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12.5.sp),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  width: double.maxFinite,
-                  height: 5.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 3.w),
-                            child: Image.asset(
-                              'images/medal.png',
-                              height: 3.h,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Image.asset(
-                              'icons/flags/png/th.png',
-                              package: 'country_icons',
-                              height: 2.h,
-                            ),
-                          ),
-                          Text(
-                            'Thailand',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 12.5.sp),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '50 P',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                                fontSize: 10.sp),
-                          ),
-                          SizedBox(
-                            width: 2.w,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 2.w),
-                            child: Text(
-                              '15,999',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12.5.sp),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  width: double.maxFinite,
-                  height: 5.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 3.w),
-                            child: Image.asset(
-                              'images/bronze-medal.png',
-                              height: 3.h,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Image.asset(
-                              'icons/flags/png/id.png',
-                              package: 'country_icons',
-                              height: 2.h,
-                            ),
-                          ),
-                          Text(
-                            'Indonesia',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 12.5.sp),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '50 P',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                                fontSize: 10.sp),
-                          ),
-                          SizedBox(
-                            width: 2.w,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 2.w),
-                            child: Text(
-                              '15,999',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12.5.sp),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Padding(
+                    padding: EdgeInsets.all(1.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        LeaderBoard('images/gold-medal.png',
+                            'icons/flags/png/my.png', 'Malaysia'),
+                        Divider(),
+                        LeaderBoard('images/medal.png',
+                            'icons/flags/png/th.png', 'Thailand'),
+                        Divider(),
+                        LeaderBoard('images/bronze-medal.png',
+                            'icons/flags/png/id.png', 'Indonesia'),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 2.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -209,14 +58,6 @@ class CommunityPage extends StatelessWidget {
                           color: Colors.white,
                           border:
                               Border.all(color: Theme.of(context).primaryColor),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 1.5.h),
@@ -242,14 +83,6 @@ class CommunityPage extends StatelessWidget {
                           color: Colors.white,
                           border:
                               Border.all(color: Theme.of(context).primaryColor),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 1.5.h),
@@ -269,7 +102,7 @@ class CommunityPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 4.h,
+                  height: 3.h,
                 ),
                 Text(
                   'Proposal',
@@ -279,24 +112,16 @@ class CommunityPage extends StatelessWidget {
                       color: Theme.of(context).primaryColor),
                 ),
                 SizedBox(
-                  height: 3.h,
+                  height: 2.h,
                 ),
                 SizedBox(
                   width: double.maxFinite,
                   child: Container(
-                    height: 25.h,
+                    height: 30.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
                       color: Colors.white,
                       border: Border.all(color: Theme.of(context).primaryColor),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
                     ),
                     child: Column(
                       children: [
@@ -323,13 +148,13 @@ class CommunityPage extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Align(
                             alignment: Alignment.bottomRight,
                             child: Icon(
                               Icons.arrow_forward,
                               color: Theme.of(context).primaryColor,
-                              size: 9.w,
+                              size: 8.w,
                             ),
                           ),
                         ),
@@ -341,6 +166,73 @@ class CommunityPage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LeaderBoard extends StatelessWidget {
+  LeaderBoard(this.image, this.flag, this.country);
+
+  final String image;
+  final String flag;
+  final String country;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      width: double.maxFinite,
+      height: 6.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3.w),
+                child: Image.asset(
+                  image,
+                  height: 4.h,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Image.asset(
+                  flag,
+                  package: 'country_icons',
+                  height: 2.5.h,
+                ),
+              ),
+              Text(
+                country,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                '50 P',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                    fontSize: 12.sp),
+              ),
+              SizedBox(
+                width: 2.w,
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 2.w),
+                child: Text(
+                  '15,999',
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

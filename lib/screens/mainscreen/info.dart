@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:codeathon/initiative.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:share_plus/share_plus.dart';
 
 /// Private calss for storing the chart series data points.
 class _ChartData {
@@ -128,14 +129,6 @@ class _InfoPageState extends State<InfoPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
                       color: Theme.of(context).primaryColor,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -145,10 +138,10 @@ class _InfoPageState extends State<InfoPage> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              '100,000',
+                              'Next achievable milestone:',
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
-                                fontSize: 30.sp,
+                                fontSize: 15.sp,
                                 color: Colors.white,
                               ),
                             ),
@@ -159,29 +152,61 @@ class _InfoPageState extends State<InfoPage> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              'PEOPLE JOINED THE COMMUNITY',
+                              '100,000 community members',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 16.sp,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
                         Image.asset(
                           'images/superhero.png',
                           height: 6.h,
+                        ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        SizedBox(
+                          width: 60.w,
+                          height: 7.h,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Share.share(
+                                  'Start your Recycling Journey with GreenHero now!\n https://www.facebook.com/codeforasia/');
+                            },
+                            child: Text(
+                              'Invite Your Friends Now',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              backgroundColor: Colors.white,
+                              side: BorderSide(
+                                width: 1.0,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 3.h,
                 ),
                 Text(
-                  'Real -Time Plastic 💚\nReduction Graph',
+                  'Real-Time Recycling Rates\n in Malaysia 💚',
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
@@ -192,17 +217,10 @@ class _InfoPageState extends State<InfoPage> {
                   height: 3.h,
                 ),
                 Container(
+                  height: 30.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30.0),
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
                   ),
                   child: _buildLiveLineChart(),
                 ),
@@ -221,14 +239,6 @@ class _InfoPageState extends State<InfoPage> {
                           color: Colors.white,
                           border:
                               Border.all(color: Theme.of(context).primaryColor),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 1.5.h),
@@ -254,14 +264,6 @@ class _InfoPageState extends State<InfoPage> {
                           color: Colors.white,
                           border:
                               Border.all(color: Theme.of(context).primaryColor),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 1.5.h),
@@ -295,95 +297,113 @@ class _InfoPageState extends State<InfoPage> {
                 SizedBox(
                   height: 3.h,
                 ),
-                Container(
-                  margin: EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          child: Image(
-                            fit: BoxFit.fill,
-                            height: 200.0,
-                            image: AssetImage('images/bottle1.png'),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                            'New Solution for New Era',
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Theme.of(context).primaryColor,
+                InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebPage(
+                          'https://www.recyclingwasteworld.co.uk/in-depth-article/a-new-era-for-plastics-recycling/217080/'),
+                    ),
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                            child: Image(
+                              fit: BoxFit.fill,
+                              height: 200.0,
+                              image: AssetImage('images/bottle1.png'),
                             ),
                           ),
-                          subtitle: Text(
-                              'Seraya Recycling Centre had proposed new initiatives to tackle plastic pollution in the COVID-19 pandemic'),
-                          trailing: SizedBox(
-                            width: 10.w,
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: Align(
-                                alignment: Alignment.bottomRight,
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  color: Theme.of(context).primaryColor,
-                                  size: 9.w,
+                          ListTile(
+                            title: Text(
+                              'New Solution for New Era',
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            subtitle: Text(
+                                'Seraya Recycling Centre had proposed new initiatives to tackle plastic pollution in the COVID-19 pandemic'),
+                            trailing: SizedBox(
+                              width: 10.w,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Icon(
+                                    Icons.arrow_forward,
+                                    color: Theme.of(context).primaryColor,
+                                    size: 9.w,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          child: Image(
-                            fit: BoxFit.fill,
-                            height: 200.0,
-                            image: AssetImage('images/bottle2.png'),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                            'Overused Plastic: Who to Blame?',
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              color: Theme.of(context).primaryColor,
+                InkWell(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebPage(
+                          'https://www.plasticsoupfoundation.org/en/plastic-problem/plastic-soup/who-is-responsible/'),
+                    ),
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                            child: Image(
+                              fit: BoxFit.fill,
+                              height: 200.0,
+                              image: AssetImage('images/bottle2.png'),
                             ),
                           ),
-                          subtitle: Text(
-                              'The usage of plastic in daily life had increased drastically from 25% to 60% per year!'),
-                          trailing: SizedBox(
-                            width: 10.w,
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 8.0),
-                              child: Align(
-                                alignment: Alignment.bottomRight,
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  color: Theme.of(context).primaryColor,
-                                  size: 9.w,
+                          ListTile(
+                            title: Text(
+                              'Overused Plastic: Who to Blame?',
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            subtitle: Text(
+                                'The usage of plastic in daily life had increased drastically from 25% to 60% per year!'),
+                            trailing: SizedBox(
+                              width: 10.w,
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Icon(
+                                    Icons.arrow_forward,
+                                    color: Theme.of(context).primaryColor,
+                                    size: 9.w,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

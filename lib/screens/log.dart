@@ -16,7 +16,18 @@ class LogPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(5.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                'Calendar',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.sp,
+                    color: Theme.of(context).primaryColor),
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
               HeatMapCalendar(
                 input: {
                   TimeUtils.removeTime(
@@ -55,19 +66,39 @@ class LogPage extends StatelessWidget {
                 labelTextColor: Theme.of(context).primaryColor,
                 dayTextColor: Colors.green[500],
               ),
+              Text(
+                'History',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.sp,
+                    color: Theme.of(context).primaryColor),
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Timeline('250 pts',
-                      'Seraya Recycling Centre\nRef: SRC112210071\n1/12/2021'),
-                  Timeline('520 pts',
-                      'Cyberjaya Recycling Centre\nRef: SRC112210073\n12/10/2021'),
-                  Timeline('139 pts',
-                      'Suria Recycling Centre\nRef: SRC113210051\n5/8/2021'),
-                  Timeline('107 pts',
-                      'Indah Recycling Centre\nRef: SRC155216071\n28/7/2021'),
-                  Timeline('70 pts',
-                      'Alam Recycling Centre\nRef: SRC182250071\n10/7/2021'),
+                  Timeline(
+                      '250 pts',
+                      'Seraya Recycling Centre\nRef: SRC112210071\n1/12/2021',
+                      Colors.green[300]),
+                  Timeline(
+                      '520 pts',
+                      'Cyberjaya Recycling Centre\nRef: SRC112210073\n12/10/2021',
+                      Colors.green[500]),
+                  Timeline(
+                      '139 pts',
+                      'Suria Recycling Centre\nRef: SRC113210051\n5/8/2021',
+                      Colors.green[300]),
+                  Timeline(
+                      '107 pts',
+                      'Indah Recycling Centre\nRef: SRC155216071\n28/7/2021',
+                      Colors.green[100]),
+                  Timeline(
+                      '70 pts',
+                      'Alam Recycling Centre\nRef: SRC182250071\n10/7/2021',
+                      Colors.green[100]),
                 ],
               ),
             ],
@@ -79,10 +110,11 @@ class LogPage extends StatelessWidget {
 }
 
 class Timeline extends StatelessWidget {
-  Timeline(this.label, this.points);
+  Timeline(this.label, this.points, this.color);
 
   final String label;
   final String points;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +147,7 @@ class Timeline extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.0),
-              color: Color(0xFF7CCF83),
+              color: color,
             ),
             width: 15.0,
             height: 15.0,

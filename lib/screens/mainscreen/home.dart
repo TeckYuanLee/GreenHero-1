@@ -1,14 +1,11 @@
-import 'package:codeathon/widgets/reusable_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:sizer/sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:codeathon/models/user.dart';
 import 'package:codeathon/services/database.dart';
 import 'package:codeathon/widgets/loading_spinner.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,10 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //call firebase
-  final dbRef = FirebaseDatabase.instance.reference().child("Job");
-  List<Map<dynamic, dynamic>> lists = [];
-
   @override
   Widget build(BuildContext context) {
     //get user data
@@ -37,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                 // backgroundColor: Colors.green[100],
                 body: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.all(7.w),
+                    padding: EdgeInsets.all(5.w),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -48,19 +41,19 @@ class _HomePageState extends State<HomePage> {
                                 'Hi ${userData.username} 🤘🏻',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 20.sp,
+                                    fontSize: 18.sp,
                                     color: Theme.of(context).primaryColor),
                               ),
                               Text(
                                 'Nice to see you again!',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 16.sp,
+                                    fontSize: 14.sp,
                                     color: Theme.of(context).primaryColor),
                               ),
                             ],
                           ),
-                          SizedBox(height: 4.5.h),
+                          SizedBox(height: 2.h),
                           CarouselSlider(
                             options: CarouselOptions(
                               height: 25.h,
@@ -87,17 +80,21 @@ class _HomePageState extends State<HomePage> {
                                           Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 1.5.h,
-                                                horizontal: 8.w),
+                                                horizontal: 5.w),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Text(
-                                                  'Milestone',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 15.sp,
+                                                Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Text(
+                                                    'Milestone',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      fontSize: 15.sp,
+                                                    ),
                                                   ),
                                                 ),
                                                 Text(
@@ -123,10 +120,10 @@ class _HomePageState extends State<HomePage> {
                             }).toList(),
                           ),
                           SizedBox(
-                            height: 3.h,
+                            height: 2.h,
                           ),
                           FAProgressBar(
-                            currentValue: 80,
+                            currentValue: 42,
                             size: 40,
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
@@ -137,23 +134,15 @@ class _HomePageState extends State<HomePage> {
                             backgroundColor: Color(0xFFFBFEF2),
                             displayText: ' points',
                           ),
-                          SizedBox(height: 4.5.h),
+                          SizedBox(height: 2.h),
                           Row(
                             children: [
                               Container(
                                 width: 40.w,
-                                height: 36.h,
+                                height: 42.h,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30.0),
                                   color: Color(0xFFA4C6B8),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 3),
-                                    ),
-                                  ],
                                 ),
                                 child: Column(
                                   children: [
@@ -161,11 +150,15 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.all(5.w),
                                       child: Column(
                                         children: [
-                                          Text(
-                                            'Reminder',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w800,
-                                              fontSize: 15.sp,
+                                          Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Text(
+                                              'Reminder',
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: 15.sp,
+                                              ),
                                             ),
                                           ),
                                           SizedBox(
@@ -197,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                                     child: SizedBox(
                                       child: Container(
                                         width: 40.w,
-                                        height: 17.h,
+                                        height: 20.h,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(30.0),
@@ -205,15 +198,6 @@ class _HomePageState extends State<HomePage> {
                                           border: Border.all(
                                               color: Theme.of(context)
                                                   .primaryColor),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.3),
-                                              spreadRadius: 5,
-                                              blurRadius: 7,
-                                              offset: Offset(0, 3),
-                                            ),
-                                          ],
                                         ),
                                         child: Column(
                                           children: [
@@ -245,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                                   SizedBox(
                                     child: Container(
                                       width: 40.w,
-                                      height: 17.h,
+                                      height: 20.h,
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
@@ -253,14 +237,6 @@ class _HomePageState extends State<HomePage> {
                                         border: Border.all(
                                             color:
                                                 Theme.of(context).primaryColor),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.3),
-                                            spreadRadius: 5,
-                                            blurRadius: 7,
-                                            offset: Offset(0, 3),
-                                          ),
-                                        ],
                                       ),
                                       child: Column(
                                         children: [
